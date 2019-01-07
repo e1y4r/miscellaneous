@@ -18,28 +18,7 @@ void printBoard(char board[9][9]) {
         printf("\n");
     }
 }
-bool haveNonUsedNumber(char board[9][9], int i, int j) {
-    for(char v = '1'; v <= '9'; v++) {
-        if(canPut(board,i,j,v)) {
-            return true;
-        }
-    }
-    return false;
-}
-bool solveAble(char board[9][9], int i, int j) {
-    for(int k = 0; k < 9; k++) {
-        if(board[i][k] == '.' && !haveNonUsedNumber(board, i, k)) {
-            return false;
-        }   
-        if(board[k][j] == '.' && !haveNonUsedNumber(board, k, j)) {
-            return false;
-        }
-        if(board[i / 3 * 3 + k % 3][j / 3 * 3 + k / 3] == '.' && !haveNonUsedNumber(board, i / 3 * 3 + k % 3, j / 3 * 3 + k / 3)) {
-            return false;
-        }
-    }
-    return true;
-}
+
 bool solveSudoku(char board[9][9]) {
     for(int i = 0; i < 9; i++) {
         for(int j = 0; j < 9; j++) {
@@ -49,7 +28,7 @@ bool solveSudoku(char board[9][9]) {
                     if(canPut(board, i, j, v)) {
                         numberAvailable = true;
                         board[i][j] = v;
-                        if(solveAble(board, i, j) && solveSudoku(board)) {
+                        if(solveSudoku(board)) {
                             return true;
                         } else  {
                             board[i][j] = '.';
