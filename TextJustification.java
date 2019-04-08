@@ -1,4 +1,4 @@
-class Utils {
+class TextJustification {
     public static List<String> fullJustify(String[] words, int maxWidth) {
         ArrayList<ArrayList<String>> wrappedText = new ArrayList();
         int currentLineWidth = 0;
