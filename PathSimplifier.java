@@ -1,4 +1,5 @@
-class PathConvert {
+// Absolute path to canonical path
+class PathSimplifier {
     private static boolean skip(String s) {
         return s.equals("") || s.equals(".");
     } 
